@@ -12,6 +12,11 @@ export class AppComponent {
   descripcion = '';
   precio = 0;
 
+  hayarticulos()
+  {
+    return Boolean(this.articulos.length);
+  }
+
   agregar()
   {
     if (!this.codigo || !this.descripcion.length || !this.precio)
