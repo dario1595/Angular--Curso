@@ -29,10 +29,8 @@ export class AppComponent {
     alert('Se agrego de forma satifactoria.');
     let articulo: Articulo = new Articulo(this.codigo, this.descripcion, this.precio);
     this.articulos.push(articulo);
+    this.limpiarCampos();
     
-    this.codigo = 0;
-    this.descripcion = '';
-    this.precio = 0;
   }
 
   borrar(codigo: number)
@@ -49,4 +47,43 @@ export class AppComponent {
     return this.articulos.find (e => e.codigo === codigo);
   }
 
+  seleccionar(codigo: number)
+  {
+    let articulo : any = this.buscarArticulo(codigo);
+    this.codigo = articulo.codigo;
+    this.descripcion = articulo.descripcion;
+    this.precio = articulo.precio;
+  }
+
+  modificar()
+  {
+    if (!this.codigo) 
+    {
+      alert('Debe especificar un codigo.');
+      return;
+    }
+
+    let articulo : any = this.buscarArticulo(this.codigo);
+
+    if (!articulo) 
+    {
+      alert('No existe un articulo con el codigo especificado.');
+      return;
+    }
+    articulo.descripcion = this.descripcion;
+    articulo.precio = this.precio;
+
+    this.limpiarCampos();  
+    alert('El articulo se actualizo de forma correcta.')
+  }
+
+  limpiarCampos()
+  {
+    this.codigo = 0;
+    this.descripcion = '';
+    this.precio = 0;
+  }
+
 }
+
+

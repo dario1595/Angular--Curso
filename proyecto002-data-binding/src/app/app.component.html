@@ -16,7 +16,7 @@
       <td>{{e.descripcion}}</td>
       <td>{{e.precio}}</td>
       <td><button (click)="borrar(e.codigo)">Borrar</button></td>
-      <td><button>Seleccionar</button></td>
+      <td><button (click)="seleccionar(e.codigo)">Seleccionar</button></td>
     </tr>
   </tbody>
 </table>
@@ -32,7 +32,7 @@
     Precio: <input type="number" [(ngModel)] = "precio">
   </p>
   <button (click)="agregar()">Agregar</button>
-  <button>Modificar</button>
+  <button (click)="modificar()">Modificar</button>
   
 
 </div>
